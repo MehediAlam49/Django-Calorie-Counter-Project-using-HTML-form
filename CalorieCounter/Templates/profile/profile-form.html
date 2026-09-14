@@ -1,0 +1,37 @@
+{% extends 'master/base.html' %}
+
+
+{% block body %}
+<h1>Update profile page</h1>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+  <div class="mb-3">
+    <label for="" class="form-label">name</label>
+    <input type="text" class="form-control" name="name" value="{{profile_data.name}}">
+  </div>
+  <div class="mb-3">
+    <label for="" class="form-label">age</label>
+    <input type="number" class="form-control" name="age" value="{{profile_data.age}}">
+  </div>
+  <div class="mb-3">
+  <select class="form-select" name="gender" aria-label="Default select example">
+    <option disabled>Select Gender</option>
+    <option value="Male" {% if profile_data.gender == "Male" %}selected{% endif %}>
+      Male
+    </option>
+    <option value="Female" {% if profile_data.gender == "Female" %}selected{% endif %}>
+      Female
+    </option>
+  </select>
+  </div>
+  <div class="mb-3">
+    <label for="" class="form-label">height</label>
+    <input type="number" class="form-control" name="height" value="{{profile_data.height}}">
+  </div>
+  <div class="mb-3">
+    <label for="" class="form-label">weight</label>
+    <input type="number" class="form-control" name="weight" value="{{profile_data.weight}}">
+  </div>
+  <button type="submit" class="btn btn-primary">Update</button>
+</form>
+{% endblock body %}
